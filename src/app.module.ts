@@ -1,7 +1,8 @@
+import { AppController } from './app.controller';
+import { ConfigModule } from '@nestjs/config';
+import { MessageModule } from './message/message.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { MessageModule } from './message/message.module';
-import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     MessageModule,
@@ -15,7 +16,7 @@ import { ConfigModule } from '@nestjs/config';
       },
     }),
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}

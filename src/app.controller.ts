@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 
 @Controller()
-export class MessageController {
+export class AppController {
   @Get()
   hello() {
     return 'hello world';
