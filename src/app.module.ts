@@ -7,17 +7,20 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [
     MessageModule,
     ConfigModule.forRoot({ isGlobal: true }),
-    MongooseModule.forRootAsync({
-      useFactory: () => {
-        console.log('uri', process.env.MONGO_URL);
-        return {
-          uri:
-            process.env.MONGO_URL ||
-            'mongodb+srv://huypt:123@cluster0.oyzgo.mongodb.net/mess_message?retryWrites=true&w=majority',
-          autoCreate: true,
-        };
-      },
-    }),
+    // MongooseModule.forRootAsync({
+    //   useFactory: () => {
+    //     console.log('uri', process.env.MONGO_URL);
+    //     return {
+    //       uri:
+    //         process.env.MONGO_URL ||
+    //         'mongodb+srv://huypt:123@cluster0.oyzgo.mongodb.net/mess_message?retryWrites=true&w=majority',
+    //       autoCreate: true,
+    //     };
+    //   },
+    // }),
+    MongooseModule.forRoot(
+      'mongodb+srv://huypt:123@cluster0.oyzgo.mongodb.net/mess_message?retryWrites=true&w=majority',
+    ),
   ],
   controllers: [AppController],
   providers: [],
