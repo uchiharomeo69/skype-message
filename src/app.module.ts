@@ -10,7 +10,9 @@ import { MongooseModule } from '@nestjs/mongoose';
     MongooseModule.forRootAsync({
       useFactory: () => {
         return {
-          uri: `${process.env.MONGO_URL}`,
+          uri:
+            process.env.MONGO_URL ||
+            'mongodb+srv://huypt:123@cluster0.oyzgo.mongodb.net/mess_message?retryWrites=true&w=majority',
           autoCreate: true,
         };
       },
