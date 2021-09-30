@@ -6,4 +6,8 @@ export class AppController {
   hello() {
     return 'hello world';
   }
+  @Get('/a')
+  hello1() {
+    return process.env.MONGO_URL;
+  }
 }
