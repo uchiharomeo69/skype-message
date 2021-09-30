@@ -9,6 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRootAsync({
       useFactory: () => {
+        console.log('uri', process.env.MONGO_URL);
         return {
           uri:
             process.env.MONGO_URL ||
