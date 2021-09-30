@@ -15,10 +15,7 @@ export class MessageController {
   }
   @Get('/:id')
   async getConversation(@Param('id') conversationId: string) {
-    console.log(conversationId);
-
-    return 'lala';
-    //return await this.messageService.getMessage(conversationId);
+    return await this.messageService.getMessage(conversationId);
   }
   @Get('/last/:id')
   async getLastmessage(@Param('id') conversationId: string) {

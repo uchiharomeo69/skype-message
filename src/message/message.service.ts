@@ -14,6 +14,8 @@ export class MessageService {
   }
 
   async getMessage(conversationId: string) {
+    console.log('lala', conversationId);
+
     return await this.messageModel.find({ conversationId }).sort('sendAt');
   }
 
