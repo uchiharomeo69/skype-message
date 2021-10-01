@@ -7,10 +7,12 @@ export class MessageController {
   @Post()
   async create(@Body() body) {
     const { senderId, conversationId, content } = body;
+    const sendAt = new Date().toISOString();
     return await this.messageService.create({
       senderId,
       conversationId,
       content,
+      sendAt,
     });
   }
   @Get('/:id')
