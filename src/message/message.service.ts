@@ -13,8 +13,14 @@ export class MessageService {
     return await new this.messageModel(data).save();
   }
 
-  async getMessage(conversationId: string) {
-    return await this.messageModel.find({ conversationId }).sort('sendAt');
+  async getMessage(conversationId: string, page: number) {
+    if (!page)
+      return await this.messageModel.find({ conversationId }).sort('sendAt');
+    return await this.messageModel
+      .find({ conversationId })
+      .sort('sendAt')
+      .skip((page - 1) * 10)
+      .limit(100);
   }
 
   async getLastMessage(conversationId: string) {

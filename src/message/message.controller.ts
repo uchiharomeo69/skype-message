@@ -1,5 +1,5 @@
 import { MessageService } from './message.service';
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 
 @Controller('message')
 export class MessageController {
@@ -16,8 +16,11 @@ export class MessageController {
     });
   }
   @Get('/:id')
-  async getConversation(@Param('id') conversationId: string) {
-    return await this.messageService.getMessage(conversationId);
+  async getConversation(
+    @Param('id') conversationId: string,
+    @Query('page') page: string,
+  ) {
+    return await this.messageService.getMessage(conversationId, parseInt(page));
   }
   @Get('/last/:id')
   async getLastmessage(@Param('id') conversationId: string) {
