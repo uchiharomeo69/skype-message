@@ -20,7 +20,7 @@ export class MessageService {
       .find({ conversationId })
       .sort('sendAt')
       .skip((page - 1) * 10)
-      .limit(100);
+      .limit(10);
   }
 
   async getLastMessage(conversationId: string) {
