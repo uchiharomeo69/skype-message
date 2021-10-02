@@ -14,8 +14,10 @@ export class MessageService {
   }
 
   async getMessage(conversationId: string, skip: number) {
-    if (!skip)
+    if (!skip && skip != 0) {
       return await this.messageModel.find({ conversationId }).sort('sendAt');
+    }
+
     return await this.messageModel.aggregate([
       { $match: { conversationId } },
       {
