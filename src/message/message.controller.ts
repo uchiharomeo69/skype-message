@@ -16,9 +16,9 @@ export class MessageController {
   @Get('/:id')
   async getConversation(
     @Param('id') conversationId: string,
-    @Query('page') page: string,
+    @Query('skip') skip: string,
   ) {
-    return await this.messageService.getMessage(conversationId, parseInt(page));
+    return await this.messageService.getMessage(conversationId, parseInt(skip));
   }
   @Get('/last/:id')
   async getLastmessage(@Param('id') conversationId: string) {

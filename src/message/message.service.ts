@@ -13,8 +13,8 @@ export class MessageService {
     return await ms.save();
   }
 
-  async getMessage(conversationId: string, page: number) {
-    if (!page)
+  async getMessage(conversationId: string, skip: number) {
+    if (!skip)
       return await this.messageModel.find({ conversationId }).sort('sendAt');
     return await this.messageModel.aggregate([
       { $match: { conversationId } },
@@ -22,7 +22,7 @@ export class MessageService {
         $sort: { sendAt: -1 },
       },
       {
-        $skip: (page - 1) * 10,
+        $skip: skip,
       },
       {
         $limit: 10,
