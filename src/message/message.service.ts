@@ -19,13 +19,16 @@ export class MessageService {
     return await this.messageModel.aggregate([
       { $match: { conversationId } },
       {
-        $sort: { sendAt: 1 },
+        $sort: { sendAt: -1 },
       },
       {
         $skip: (page - 1) * 10,
       },
       {
         $limit: 10,
+      },
+      {
+        $sort: { sendAt: 1 },
       },
     ]);
   }
