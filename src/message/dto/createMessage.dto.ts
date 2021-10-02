@@ -8,6 +8,4 @@ export class CreateMessage {
   @IsNotEmpty()
   @Length(0, 3000)
   content: string;
-  @IsNotEmpty()
-  sendAt: string;
 }
